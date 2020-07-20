@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express"),
 	  app = express(),
 	  axios = require("axios"),
@@ -17,9 +18,9 @@ const commentRoutes = require("./routes/comments"),
 	  campgroundRoutes = require("./routes/campgrounds"),
 	  indexRoutes = require("./routes/index")
 
-// mongoose.connect(process.env.DATABASEURL, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false});
+var url = process.env.DATABASEURL;
 
-mongoose.connect(process.env.DATABASEURL, { 
+mongoose.connect(url, { 
 	useUnifiedTopology: true, 
 	useNewUrlParser: true, 
 	useFindAndModify: false,
@@ -44,6 +45,7 @@ app.use(require("express-session")({
 	saveUninitialized: false
 }));
 
+app.locals.moment = require("moment");
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
