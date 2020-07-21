@@ -1,15 +1,15 @@
-var mongoose = require("mongoose");
- 
+var mongoose = require('mongoose');
+
 var commentSchema = new mongoose.Schema({
-    text: String,
-    createdAt: { type: Date, default: Date.now },
-    author: {
+	text: String,
+	createdAt: { type: Date, default: Date.now },
+	author: {
 		id: {
 			type: mongoose.Schema.Types.ObjectId,
-			ref: "User"
+			ref: 'User',
 		},
-		username: String
-	}
+		username: String,
+	},
 });
- 
-module.exports = mongoose.model("Comment", commentSchema);
+
+module.exports = mongoose.model('Comment', commentSchema);
