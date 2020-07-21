@@ -1,0 +1,33 @@
+<%- include("../partials/header") %>
+
+<div class="row">
+	<div class="col-md-4">
+		<h1><%= user.firstName + " " + user.lastName %></h1>
+		<div class="thumbnail">
+			<img src="<%= user.avatar %>" alt="user profile image">
+			<div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
+		</div>
+<!-- 		
+		</p>Pamela Anderson is a 27-year-old health centre receptionist who enjoys social media, football and praying. She is Kind and gentle, but can also be very dull and a bit lazy.		</p>
+
+		<p>She is an American Christian who defines herself as straight. She has a post-graduate degree in medicine.</p>
+
+		<p>Physically, Pamela is in pretty good shape. She is average-height with olive skin, blonde hair and brown eyes.</p>
+
+		<p>She grew up in a middle class neighbourhood. She was raised by her father, her mother having left when she was young.</p>
+
+		<p>She is currently single. Her most recent romance was with a sales assistant called Tristan Kenneth Hall, who was 2 years older than her. They broke up because Tristan felt that 		Pamela was too lazy for the relationship to move forwards.</p>
+
+		<p>Pamela's best friend is a health centre receptionist called Rhianna Fleming. They have a very firey friendship. She also hangs around with Mikey Greenwood and Simon Dean. They 			enjoy adult colouring books together.</p> -->
+	</div>
+	<div class="col-md-8">
+		<h3><%= user.username %>'s campgrounds:</h3>
+		<ul>
+		<% campgrounds.forEach((campground) => { %>
+			<li><a href="/campgrounds/<%= campground.id %>"><%= campground.name %></a></li>
+		<% }); %>
+		</ul>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>

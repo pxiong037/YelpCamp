@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express"),
 	  app = express(),
-	  axios = require("axios"),
 	  bodyParser = require("body-parser"),
 	  mongoose = require("mongoose"),
 	  flash = require("connect-flash"),
