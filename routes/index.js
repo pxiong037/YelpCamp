@@ -28,11 +28,12 @@ router.post('/register', (req, res) => {
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		email: req.body.email,
-		avatar: req.body.avatar,
 	});
 	if (req.body.adminCode === 'secretcode123') {
 		newUser.isAdmin = true;
 	}
+	
+	newUser.avatar = req.body.avatar ? req.body.avatar : newUser.avatar;
 	User.register(newUser, req.body.password, function (err, user) {
 		if (err) {
 			console.log(err);
