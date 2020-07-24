@@ -2,7 +2,15 @@
 
 <div class="row">
 	<div class="col-md-4">
-		<h1><%= user.firstName + " " + user.lastName %></h1>
+		<h1>
+			<% if (currentUser && currentUser._id.equals(user._id)) { %>
+            <!--If the current user owns the comment, change the color of the user icon-->
+            <i class="fas fa-user text-success" aria-hidden="true"></i>
+              <% } else { %>
+            <!--Else just display it black-->
+            <i class="fas fa-user" aria-hidden="true"></i>
+              <% } %>
+			<%= user.firstName + " " + user.lastName %></h1>
 		<div class="thumbnail">
 			<img src="<%= user.avatar %>" alt="user profile image" />
 			<div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
@@ -10,11 +18,19 @@
 	</div>
 	<div class="col-md-8">
 		<h3><%= user.username %>'s campgrounds:</h3>
-		<ul>
-			<% campgrounds.forEach((campground) => { %>
-			<li><a href="/campgrounds/<%= campground.id %>"><%= campground.name %></a></li>
+		<div class="row text-center" id="campground-grid">
+			<% campgrounds.forEach(function(campground){ %>
+				<div class="col-lg-5 col-md-8 col-sm-6 mb-4">
+					<div class="card">
+					  <img class="card-img-top img-fluid" src="<%= campground.image %>" alt="<%= campground.name %>">
+					  <div class="card-body">
+						<h5 class="card-title"><%= campground.name %></h5>
+						<a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+					  </div>
+					</div>
+				</div>
 			<% }); %>
-		</ul>
+		</div>
 	</div>
 </div>
 
