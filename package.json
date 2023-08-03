@@ -1,11 +1,16 @@
 {
+  "homepage": "http://gitname.github.io/yelpcamp",
   "name": "yelpcamp",
   "version": "1.0.0",
   "description": "Yelp Camp",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "Prechar Xiong",
   "license": "ISC",
